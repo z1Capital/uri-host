@@ -7,9 +7,9 @@ const express = require("express");
 const cors = require("cors");
 
 // Certificate
-const privateKey = fs.readFileSync(path.join(__dirname, 'app/certs/privkey.pem'), 'utf8');
-const certificate = fs.readFileSync(path.join(__dirname, 'app/certs/cert.pem'), 'utf8');
-const ca = fs.readFileSync(path.join(__dirname, 'app/certs/chain.pem'), 'utf8');
+const privateKey = fs.readFileSync(path.join(__dirname, 'certs/privkey.pem'), 'utf8');
+const certificate = fs.readFileSync(path.join(__dirname, 'certs/cert.pem'), 'utf8');
+const ca = fs.readFileSync(path.join(__dirname, 'certs/chain.pem'), 'utf8');
 
 const credentials = {
 	key: privateKey,
