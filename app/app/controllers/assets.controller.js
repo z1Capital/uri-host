@@ -1,4 +1,5 @@
 const path = require("path");
+const contractController = require("./contract.controller");
 
 exports.image = (req, res) => {
   const { id } = req.params;
