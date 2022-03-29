@@ -7,7 +7,7 @@ services:
     env_file: ./.env
     volumes:
       - ./assets:/app/app/assets
-      - /etc/letsencrypt/live/assets.cryptobabylions.com/:/app/app/certs
+      - /etc/letsencrypt/live/assets.cryptobabylions.com/:/app/certs
     ports:
       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
       - 443:443
