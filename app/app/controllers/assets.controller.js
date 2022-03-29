@@ -66,9 +66,3 @@ exports.metadata = (req, res) => {
     });
   }
 };
-
-exports.challenge = (req, res) => {
-  res.send(
-    "OhsdbIvDJ8kay3ZBgLaGUrb62MJDz9G43xSDEN2asVE.9HbW1IaVVoEQbjKMINLSl6tJLYCDW3AAZ7BzR-hNQwc"
-  );
-};

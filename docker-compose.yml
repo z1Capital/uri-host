@@ -6,7 +6,8 @@ services:
     restart: unless-stopped
     env_file: ./.env
     volumes:
-      - ./assets:/app/assets
+      - ./assets:/app/app/assets
+      - /etc/letsencrypt/live/assets.cryptobabylions.com/:/app/app/certs
     ports:
       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
     environment:
