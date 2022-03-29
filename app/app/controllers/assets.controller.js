@@ -48,7 +48,8 @@ exports.image = (req, res) => {
       })
       .sendFile(id, { root: path.join(__dirname, "../assets/images") });
   } else {
-    res.json({ message: "Welcome to crypto baby lions assets application." });
+  res.json({ message: "Welcome to crypto baby lions assets application." });
+  }
 };
 
 exports.metadata = (req, res) => {
