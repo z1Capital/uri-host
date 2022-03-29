@@ -54,7 +54,13 @@ exports.metadata = (req, res) => {
   const numberId = parseInt(id);
 
   if (numberId >= 0 && numberId < currentSupply) {
-    res.sendFile(id, { root: path.join(__dirname, "../assets/metadata") });
+    res
+      .sendFile(id, {
+        root: path.join(__dirname, "../assets/metadata"),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
   } else {
     res.sendFile("placeholder.json", {
       root: path.join(__dirname, "../assets"),
