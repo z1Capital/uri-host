@@ -33,3 +33,10 @@ exports.metadata = (req, res) => {
     });
   }
 };
+
+exports.placeholder = (req, res) => {
+  const { id } = req.params;
+  res.sendFile(id, {
+    root: path.join(__dirname, "../assets/placeholder"),
+  });
+};
