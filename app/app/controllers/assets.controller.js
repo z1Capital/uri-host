@@ -42,11 +42,7 @@ exports.image = (req, res) => {
   const numberId = parseInt(id.replace(".png", ""));
 
   if (numberId >= 0 && numberId < currentSupply) {
-    res
-      .writeHead(200, {
-        "Content-Type": "image/png",
-      })
-      .sendFile(id, { root: path.join(__dirname, "../assets/images") });
+    res.sendFile(id, { root: path.join(__dirname, "../assets/images") });
   } else {
     res.json({ message: "Welcome to crypto baby lions assets application." });
   }
