@@ -10,7 +10,5 @@ services:
     ports:
       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
       - 443:443
-    environment:
-      - CONTRACT=0xc81feadcbcd93dd4bb0a0760f9a9fc8348ea8dee
     stdin_open: true
     tty: true

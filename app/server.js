@@ -6,6 +6,8 @@ const https = require('https');
 const express = require("express");
 const cors = require("cors");
 
+const contractController = require("./app/controllers/contract.controller");
+
 // Certificate
 const privateKey = fs.readFileSync(path.join(__dirname, 'certs/privkey.pem'), 'utf8');
 const certificate = fs.readFileSync(path.join(__dirname, 'certs/cert.pem'), 'utf8');
@@ -31,6 +33,13 @@ app.use(express.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
+
+
+contractController.setData();
+
+setInterval(function () {
+  contractController.setData();
+}, 1000 * 60 * 5);
 
 
 require("./app/routes/assets.routes")(app);
