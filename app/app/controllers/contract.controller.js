@@ -25,6 +25,6 @@ exports.setData = () => {
     .catch(console.log);
 };
 
-exports.metadata = (req, res) => {
+exports.getData = () => {
   return currentSupply;
 };
