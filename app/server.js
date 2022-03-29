@@ -1,4 +1,5 @@
 require("dotenv").config();
+const path = require('path');
 const fs = require('fs');
 const http = require('http');
 const https = require('https');
@@ -6,9 +7,9 @@ const express = require("express");
 const cors = require("cors");
 
 // Certificate
-const privateKey = fs.readFileSync('certs/privkey.pem', 'utf8');
-const certificate = fs.readFileSync('certs/cert.pem', 'utf8');
-const ca = fs.readFileSync('certs/chain.pem', 'utf8');
+const privateKey = fs.readFileSync(path.join(__dirname, 'certs/privkey.pem'), 'utf8');
+const certificate = fs.readFileSync(path.join(__dirname, 'certs/cert.pem'), 'utf8');
+const ca = fs.readFileSync(path.join(__dirname, 'certs/chain.pem'), 'utf8');
 
 const credentials = {
 	key: privateKey,
