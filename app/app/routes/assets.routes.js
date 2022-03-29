@@ -6,5 +6,5 @@ module.exports = app => {
   router.get("/images/:id", assets.image);
   router.get("/metadata/:id", assets.metadata);
 
-  app.use('/v1', router);
+  app.use('/', router);
 };

@@ -1,8 +1,9 @@
-const ABI = require("./abi.json");
+const path = require("path");
 const Web3 = require("web3");
+const ABI = require("./abi.json");
+
 const ethNetwork =
   "https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161";
-const web3 = new Web3(new Web3.providers.HttpProvider(ethNetwork));
 
 var Contract = require("web3-eth-contract");
 
