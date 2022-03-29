@@ -62,10 +62,10 @@ exports.metadata = (req, res) => {
       .writeHead(200, {
         "Content-Type": "application/json",
       })
-      .sendFile(id, { root: path.join(__dirname, "assets/metadata") });
+      .sendFile(id, { root: path.join(__dirname, "../assets/metadata") });
   } else {
     res.sendFile("placeholder.json", {
-      root: path.join(__dirname, "assets"),
+      root: path.join(__dirname, "../assets"),
     });
   }
 };
