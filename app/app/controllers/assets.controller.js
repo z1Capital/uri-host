@@ -36,7 +36,6 @@ setInterval(function () {
   getData();
 }, 1000 * 60 * 5);
 
-
 exports.image = (req, res) => {
   const { id } = req.params;
 
@@ -49,7 +48,7 @@ exports.image = (req, res) => {
       })
       .sendFile(id, { root: path.join(__dirname, "../assets/images") });
   } else {
-  res.json({ message: "Welcome to crypto baby lions assets application." });
+    res.json({ message: "Welcome to crypto baby lions assets application." });
   }
 };
 
