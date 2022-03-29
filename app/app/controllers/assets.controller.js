@@ -54,16 +54,21 @@ exports.metadata = (req, res) => {
   const numberId = parseInt(id);
 
   if (numberId >= 0 && numberId < currentSupply) {
-    res
-      .sendFile(id, {
-        root: path.join(__dirname, "../assets/metadata"),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+    res.sendFile(id, {
+      root: path.join(__dirname, "../assets/metadata"),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   } else {
     res.sendFile("placeholder.json", {
       root: path.join(__dirname, "../assets"),
     });
   }
+};
+
+exports.challenge = (req, res) => {
+  res.send(
+    "OhsdbIvDJ8kay3ZBgLaGUrb62MJDz9G43xSDEN2asVE.9HbW1IaVVoEQbjKMINLSl6tJLYCDW3AAZ7BzR-hNQwc"
+  );
 };
