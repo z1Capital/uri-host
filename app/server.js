@@ -1,32 +1,21 @@
 require("dotenv").config();
-const path = require('path');
-const fs = require('fs');
-const http = require('http');
-const https = require('https');
+const path = require("path");
+const fs = require("fs");
+const http = require("http");
+const https = require("https");
 const express = require("express");
 const cors = require("cors");
 
 const contractController = require("./app/controllers/contract.controller");
 
-// Certificate
-const privateKey = fs.readFileSync(path.join(__dirname, 'certs/privkey.pem'), 'utf8');
-const certificate = fs.readFileSync(path.join(__dirname, 'certs/cert.pem'), 'utf8');
-const ca = fs.readFileSync(path.join(__dirname, 'certs/chain.pem'), 'utf8');
-
-const credentials = {
-	key: privateKey,
-	cert: certificate,
-	ca: ca
-};
-
 const app = express();
 
-var corsOptions = {
-  origin: "*",
-  optionsSuccessStatus: 200,
-};
-
-app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: "*",
+    optionsSuccessStatus: 200,
+  })
+);
 
 // parse requests of content-type - application/json
 app.use(express.json());
@@ -34,13 +23,11 @@ app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-
-contractController.setData();
+contractController.updateData();
 
 setInterval(function () {
-  contractController.setData();
+  contractController.updateData();
 }, 1000 * 60 * 5);
-
 
 require("./app/routes/assets.routes")(app);
 
@@ -48,12 +35,19 @@ require("./app/routes/assets.routes")(app);
 const PORT = process.env.NODE_DOCKER_PORT || 8080;
 
 const httpServer = http.createServer(app);
-const httpsServer = https.createServer(credentials, app);
+const httpsServer = https.createServer(
+  {
+    key: fs.readFileSync(path.join(__dirname, "certs/privkey.pem"), "utf8"),
+    cert: fs.readFileSync(path.join(__dirname, "certs/cert.pem"), "utf8"),
+    ca: fs.readFileSync(path.join(__dirname, "certs/chain.pem"), "utf8"),
+  },
+  app
+);
 
 httpServer.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
 httpsServer.listen(443, () => {
-	console.log('HTTPS Server running on port 443');
+  console.log("HTTPS Server running on port 443");
 });
