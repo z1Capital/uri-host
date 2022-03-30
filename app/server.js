@@ -5,8 +5,11 @@ const http = require("http");
 const https = require("https");
 const express = require("express");
 const cors = require("cors");
-
 const contractController = require("./app/controllers/contract.controller");
+
+contractController.updateData();
+
+setInterval(() => contractController.updateData(), 1000 * 60 * 5);
 
 const app = express();
 
@@ -23,12 +26,6 @@ app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-contractController.updateData();
-
-setInterval(function () {
-  contractController.updateData();
-}, 1000 * 60 * 5);
-
 require("./app/routes/assets.routes")(app);
 
 // set port, listen for requests
@@ -44,10 +41,7 @@ const httpsServer = https.createServer(
   app
 );
 
-httpServer.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
-});
-
-httpsServer.listen(443, () => {
-  console.log("HTTPS Server running on port 443");
-});
+httpServer.listen(PORT, () =>
+  console.log(`Server is running on port ${PORT}.`)
+);
+httpsServer.listen(443, () => console.log("HTTPS Server running on port 443"));
