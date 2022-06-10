@@ -6,16 +6,16 @@ const ABI = require("./abi.json");
 
 Contract.setProvider(
   new Web3.providers.HttpProvider(
-    `https://mainnet.infura.io/v3/${infuraConfig.ID}`
+    `https://${infuraConfig.NETWORK}.infura.io/v3/${infuraConfig.ID}`
   )
 );
 
-const CryptoBabyLionsContract = new Contract(ABI, contractConfig.ADDRESS);
+const ERC721Contract = new Contract(ABI, contractConfig.ADDRESS);
 
 var currentSupply = 0;
 
 exports.updateData = () => {
-  CryptoBabyLionsContract.methods
+  ERC721Contract.methods
     .totalSupply()
     .call()
     .then(function (result) {
