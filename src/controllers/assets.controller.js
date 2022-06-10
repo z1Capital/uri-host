@@ -10,7 +10,7 @@ exports.image = (req, res) => {
   if (numberId >= 0 && numberId < currentSupply) {
     res.sendFile(id, { root: path.join(__dirname, "../assets/images") });
   } else {
-    res.json({ message: "Welcome to crypto baby lions assets application." });
+    res.json({ message: "Welcome to AnimaVerse assets application." });
   }
 };
 
