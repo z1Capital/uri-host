@@ -5,7 +5,7 @@ const http = require("http");
 const https = require("https");
 const express = require("express");
 const cors = require("cors");
-const contractController = require("./app/controllers/contract.controller");
+const contractController = require("./controllers/contract.controller");
 
 contractController.updateData();
 
@@ -26,7 +26,7 @@ app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-require("./app/routes/assets.routes")(app);
+require("./routes/assets.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.NODE_DOCKER_PORT || 8080;
